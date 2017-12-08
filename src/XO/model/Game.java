@@ -1,4 +1,4 @@
-package XO.model.exceptions;
+package XO.model;
 
 import XO.model.Field;
 import XO.model.Figure;

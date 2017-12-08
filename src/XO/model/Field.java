@@ -30,4 +30,8 @@ public class Field {
         return true;
     }
 
+    public int getSize() {
+        return this.fieldSize;
+    }
+
 }

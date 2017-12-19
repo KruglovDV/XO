@@ -5,21 +5,8 @@ import XO.model.exceptions.InvalidCoordinateException;
 
 public class WinnerController {
     public Figure checkWinner(final Field field) {
-        IPointCreator getVertical = new IPointCreator() {
-            @Override
-            public Point getPoint(int x, int y) {
-                return new Point(x, y);
-            }
-        };
-
-        IPointCreator getHorizontal = new IPointCreator() {
-            @Override
-            public Point getPoint(int x, int y) {
-                return new Point(y, x);
-            }
-        };
-        if (checkField(field, getVertical) != null) return checkField(field, getVertical);
-        if (checkField(field, getHorizontal) != null) return checkField(field, getHorizontal);
+        if (checkField(field, Point::new) != null) return checkField(field, Point::new);
+        if (checkField(field, (x, y) -> new Point(y, x)) != null) return checkField(field, (x, y) -> new Point(y, x));
         if (checkFirstDiagonal(field) != null ) return checkFirstDiagonal(field);
         if (checkSecondDiagonal(field) != null) return checkSecondDiagonal(field);
         return  null;
@@ -57,6 +44,7 @@ public class WinnerController {
         return null;
     }
 
+    @FunctionalInterface
     private interface IPointCreator {
         Point getPoint(int x, int y);
     }

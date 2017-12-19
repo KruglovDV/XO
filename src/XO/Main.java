@@ -16,6 +16,7 @@ public class Main {
         final WinnerController winnerController = new WinnerController();
         final Field field = game.getField();
         final Main main = new Main();
+        view.showPlayers();
         main.gameLoop(view, currentMoveController, moveController, winnerController, in, field);
     }
 

@@ -10,6 +10,12 @@ public class ConsoleView {
         this.game = game;
     }
 
+    public void showPlayers() {
+        System.out.println("Players: ");
+        for (Player player : game)
+            System.out.println(player.getName());
+    }
+
     public void printField() {
         final Field field = this.game.getField();
         for(int y = 0; y < field.getSize(); y++) {
